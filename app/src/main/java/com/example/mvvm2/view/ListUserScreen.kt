@@ -17,7 +17,7 @@ import androidx.compose.ui.unit.dp
 import com.example.mvvm2.model.User
 
 @Composable
-fun allUser(listUser : List<User>) {
+fun allUser(listUser : List<User>, onItemClicked: (User) -> Unit ) {
     LazyColumn(
         modifier = Modifier.fillMaxWidth(),
         contentPadding = PaddingValues(10.dp)
@@ -35,8 +35,8 @@ fun allUser(listUser : List<User>) {
                 Text("Daftar Pengguna", style = MaterialTheme.typography.headlineMedium)
             }
         }
-        items(listUser){
-            user -> userCard(user.id,user.name,user.email)
+        items(listUser, key = {it.id}){
+            user -> userCard(user, onClick = onItemClicked)
         }
     }
 }
