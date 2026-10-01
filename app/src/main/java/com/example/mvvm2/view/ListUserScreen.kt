@@ -1,6 +1,7 @@
 package com.example.mvvm2.view
 
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -17,12 +18,22 @@ import androidx.compose.ui.unit.dp
 import com.example.mvvm2.model.User
 
 @Composable
-fun allUser(listUser : List<User>, onItemClicked: (User) -> Unit ) {
+fun allUser(listUser: List<User>, onItemClicked: (User) -> Unit) {
     LazyColumn(
         modifier = Modifier.fillMaxWidth(),
         contentPadding = PaddingValues(10.dp)
     ) {
         item {
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(top = 10.dp),
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                Text(text = "Dirga Yuditama", style = MaterialTheme.typography.titleLarge)
+                Text(text = "NIM: 245150400111034", style = MaterialTheme.typography.bodyMedium)
+            }
+
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -30,13 +41,12 @@ fun allUser(listUser : List<User>, onItemClicked: (User) -> Unit ) {
                     .padding(vertical = 20.dp),
                 horizontalArrangement = Arrangement.Center,
                 verticalAlignment = Alignment.CenterVertically
-            )
-            {
+            ) {
                 Text("Daftar Pengguna", style = MaterialTheme.typography.headlineMedium)
             }
         }
-        items(listUser, key = {it.id}){
-            user -> userCard(user, onClick = onItemClicked)
+        items(listUser, key = { it.id }) { user ->
+            userCard(user, onClick = onItemClicked)
         }
     }
 }

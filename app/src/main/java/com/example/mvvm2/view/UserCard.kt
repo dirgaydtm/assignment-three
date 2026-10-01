@@ -11,7 +11,6 @@ import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.CardElevation
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -19,11 +18,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
-import com.example.mvvm2.R
 import com.example.mvvm2.model.User
 
 @Composable
-fun userCard(user:User, onClick: (User) -> Unit) {
+fun userCard(user: User, onClick: (User) -> Unit) {
     Card(
         modifier = Modifier
             .padding(10.dp)
@@ -38,14 +36,13 @@ fun userCard(user:User, onClick: (User) -> Unit) {
     ) {
         Row {
             Image(
-                painter = painterResource(R.drawable.profile_picture),
+                painter = painterResource(user.imageResId),
                 contentDescription = "profile",
                 modifier = Modifier
                     .size(80.dp)
                     .clip(CircleShape)
             )
-            Column(Modifier.padding(10.dp))
-            {
+            Column(Modifier.padding(10.dp)) {
                 Text(
                     text = user.id.toString(), style = MaterialTheme.typography.bodyLarge
                 )

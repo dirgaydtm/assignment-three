@@ -12,7 +12,7 @@ import com.example.mvvm2.model.User
 @Composable
 fun detail(user: User) {
     Column(modifier = Modifier.padding(50.dp)) {
-        Text(text = "id =" + user.id.toString())
+        Text(text = "id = " + user.id.toString())
         Text(text = "nama = " + user.name)
         Text(text = "email = " + user.email)
     }
